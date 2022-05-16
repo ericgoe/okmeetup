@@ -10,6 +10,7 @@ import { ColorSchemeName, Pressable } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
+import ImportCalendarScreen from '../screens/ImportCalendarScreen';
 import CreateEventScreen from '../screens/CreateEventScreen';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
@@ -41,6 +42,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
     return (
         <Stack.Navigator>
+            <Stack.Screen name="ImportCalendarScreen" component={ImportCalendarScreen} />
             <Stack.Screen name="CreateEventScreen" component={CreateEventScreen} />
             <Stack.Screen name="Root" component={NotFoundScreen} options={{ title: 'Oops!' }} />
             <Stack.Group screenOptions={{ presentation: 'modal' }}>
