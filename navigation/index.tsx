@@ -26,7 +26,7 @@ export default function Navigation(props: NavigationProps) {
     return (
         <NavigationContainer
             linking={LinkingConfiguration}
-            theme={props.colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+            theme={DefaultTheme}>
             <RootNavigator />
         </NavigationContainer>
     );
