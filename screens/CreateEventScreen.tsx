@@ -10,4 +10,4 @@ const CreateEventScreen = () => {
 }
 
 
-export default CreateEventScreen
+export default CreateEventScreen;
