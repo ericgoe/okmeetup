@@ -1,32 +1,42 @@
-import React, { useState } from 'react'
-import { Pressable, StyleSheet, Text, TextInput as _TextInput, TouchableOpacity, ViewStyle } from 'react-native'
-import {Dimensions} from 'react-native';
-const screen = Dimensions.get('screen');
+import React from 'react'
+import {
+    StyleProp,
+    StyleSheet,
+    Text,
+    TextInput as _TextInput,
+    TextStyle,
+    TouchableOpacity,
+    ViewStyle,
+} from 'react-native'
+import Colors from '../constants/Colors'
 
+type ButtonProps = {
+    children: string
+    style?: StyleProp<ViewStyle>
+    textStyle?: StyleProp<TextStyle>
+    onPress: () => void
+}
 
-const Button = () => {
+const Button = (props: ButtonProps) => {
     return (
-        <Pressable style={styles.button}>
-            <Text style={styles.buttonText}>Erstellen</Text>
-        </Pressable>
+        <TouchableOpacity style={[props.style, styles.button]} onPress={props.onPress}>
+            <Text style={[props.textStyle, styles.buttonText]}>{props.children}</Text>
+        </TouchableOpacity>
     )
- }
+}
 
- const styles = StyleSheet.create({
-	button: {
-		flex: 1,
-		width: screen.width - 40,
-		maxHeight: screen.height / 14,
-		backgroundColor: '#0284a5',
-		margin: 10,
-		justifyContent: 'center',
-		borderRadius: 50,
-	},
-	buttonText: {
-		fontSize: 20,
-		textAlign: 'center',
-		color: 'white',
-	}
+const styles = StyleSheet.create({
+    button: {
+        backgroundColor: Colors.primary,
+        justifyContent: 'center',
+        borderRadius: 50,
+        paddingVertical: 10
+    },
+    buttonText: {
+        fontSize: 20,
+        textAlign: 'center',
+        color: Colors.text,
+    },
 })
 
-export default Button;
+export default Button
