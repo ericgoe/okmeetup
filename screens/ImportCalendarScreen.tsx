@@ -1,34 +1,27 @@
 import React from 'react'
-import { StyleSheet, Text, Button, Image, View } from "react-native"
+import { StyleSheet, Text, Image, View, TouchableOpacity } from "react-native"
 import { Dimensions } from 'react-native'
+import Button from '../components/Button';
+import Colors from '../constants/Colors';
 
-const screenSize = Dimensions.get('screen');
 
 const ImportCalendarScreen = () => {
     return (
         <View style={styles.container}>
             <View style={styles.upperContainer}>
-
                 <Image source={require('../assets/images/calendar-icon.png')} />
-                <Text>
+                <Text style={styles.text}>
                     Importiere deinen Kalender, damit wir deine freien Zeiten eintragen können.
                 </Text>
             </View>
             <View style={styles.lowerContainer}>
-                <Button 
-                    onPress={importCalendar}
-                    title="Kalender importieren"
-                    color="#841584"
-                    accessibilityLabel="Learn more about this purple button"
-                />
                 <Button
-                    onPress={enterFreeTimeManually}
-                    title="oder manuell eintragen"
-                    color="#841584"
-                    accessibilityLabel="Learn more about this purple button"
-                />
+                    onPress={importCalendar}
+                >Kalender importieren</Button>
+                <TouchableOpacity onPress={enterFreeTimeManually}>
+                    <Text style={styles.clickableText}>oder manuell eintragen</Text>
+                </TouchableOpacity>
             </View>
-
         </View>
     )
 }
@@ -48,36 +41,41 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         justifyContent: 'space-between',
         alignItems: 'center',
-        alignContent: 'center',
-        backgroundColor: 'blue'
+        alignContent: 'center'
     },
 
     upperContainer: {
-        marginVertical: "15%",
-        height: "50%",
+        marginVertical: "5%",
+        height: "60%",
         width: "100%",
+        justifyContent: 'space-around',
         justifySelf: 'center',
         alignItems: 'center',
-        backgroundColor: 'green'
     },
 
     lowerContainer: {
-        marginBottom: "15%",
-        height: "20%",
-        width: "100%",
+        marginBottom: "10%",
+        height: "22.5%",
+        width: "80%",
         position: 'relative',
         alignself: 'end',
         justifyContent: 'space-around',
-        backgroundColor: 'yellow'
     },
 
     text: {
-        color: 'green'
+        color: Colors.text,
+        textAlign: 'center',
+        fontFamily: 'cantarell-regular'
     },
 
-    button: {
-        margin: '3%'
+    clickableText:{
+        fontSize: 20,
+        fontFamily: 'cantarell-regular',
+        color: Colors.primary,
+        textAlign: 'center',
+        textDecorationLine: 'underline',
     }
+
 })
 
 export default ImportCalendarScreen
