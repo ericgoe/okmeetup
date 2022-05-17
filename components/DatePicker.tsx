@@ -1,25 +1,53 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, TextInput as _TextInput, TouchableOpacity, ViewStyle } from 'react-native'
-import DateTimePicker from '@react-native-community/datetimepicker';
+import {
+    Alert,
+    Platform,
+    StyleSheet,
+    Text,
+    TextInput as _TextInput,
+    TouchableOpacity,
+    ViewStyle,
+} from 'react-native'
+import Colors from '../constants/Colors'
+import { DateTimePickerAndroid } from '@react-native-community/datetimepicker'
 import { DateTime } from 'luxon'
 
 type DatePickerProps = {
     placeholder?: string
     style?: ViewStyle
+    id: string
 }
 
 const DatePicker = (props: DatePickerProps) => {
     const { placeholder, style } = props
 
     const [date, setDate] = useState<Date | undefined>(undefined)
-    const [isDateOpened, setDateOpenState] = useState(false)
 
-    //const dateString = date ? DateTime.fromJSDate(date).toFormat('dd.MM.yyyy') : undefined
-    const dateString = undefined
+    const dateString = date ? DateTime.fromJSDate(date).toFormat('dd.MM.yyyy') : undefined
+
+    const openDateTimePicker = () => {
+        if (Platform.OS !== 'android') {
+            Alert.alert('DateTimePicker is not supported on iOS.')
+            return
+        }
+        DateTimePickerAndroid.open({
+            nativeID: props.id,
+            value: date || new Date(),
+            mode: 'date',
+            onChange: (evt) => {
+                if (evt.type === 'set') {
+                    console.log(evt.nativeEvent)
+                    evt.nativeEvent.timestamp &&
+                        setDate(new Date(evt.nativeEvent.timestamp))
+                }
+
+            }
+        })
+    }
 
     return (
         <TouchableOpacity
-            onPress={() => setDateOpenState(true)}
+            onPress={openDateTimePicker}
             style={[style, styles.container]}
         >
             <Text
@@ -27,36 +55,20 @@ const DatePicker = (props: DatePickerProps) => {
             >
                 {placeholder} {dateString}
             </Text>
-            <DateTimePicker
-                testID="dateTimePicker"
-                value={date || new Date()}
-                textColor='blue'
-                mode={'date'}
-                is24Hour={true}
-                onChange={(evt) => {
-                    if (evt.type === 'set') {
-                        console.log(evt.nativeEvent)
-                        //evt.nativeEvent.timestamp && setDate(new Date(evt.nativeEvent.timestamp))
-                    }
-                }}
 
-            />
         </TouchableOpacity >
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'white',
+        backgroundColor: Colors.gray,
         paddingHorizontal: 5,
         paddingVertical: 15,
         borderRadius: 2,
-        borderColor: 'blue',
+        borderColor: Colors.primary,
         borderWidth: 2,
     },
-    placeholder: {
-        color: 'gray'
-    }
 })
 
 export default DatePicker
