@@ -8,8 +8,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { ColorSchemeName } from 'react-native';
 import CustomTheme from '../constants/CustomTheme';
-
 import CreateEventScreen from '../screens/CreateEventScreen';
+import ImportCalendarScreen from '../screens/ImportCalendarScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -38,6 +38,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
     return (
         <Stack.Navigator>
+            <Stack.Screen name="ImportCalendarScreen" component={ImportCalendarScreen} />
             <Stack.Screen name="CreateEventScreen" component={CreateEventScreen} />
             <Stack.Screen name="Root" component={NotFoundScreen} options={{ title: 'Oops!' }} />
             <Stack.Group screenOptions={{ presentation: 'modal' }}>
