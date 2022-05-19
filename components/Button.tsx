@@ -1,4 +1,9 @@
 import React from 'react'
+import { Dimensions } from 'react-native'
+
+
+const screenWidth = Dimensions.get('screen');
+
 import {
     StyleProp,
     StyleSheet,
@@ -27,10 +32,13 @@ const Button = (props: ButtonProps) => {
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: Colors.primary,
+        flex: 1,
+        width: screenWidth.width - 40,
+        maxHeight: screenWidth.height / 14,
+        backgroundColor: '#0284a5',
         justifyContent: 'center',
         borderRadius: 50,
-        paddingVertical: 10
+        marginBottom: 20,
     },
     buttonText: {
         fontSize: 20,
