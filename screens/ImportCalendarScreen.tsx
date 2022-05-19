@@ -15,9 +15,7 @@ const ImportCalendarScreen = () => {
                 </Text>
             </View>
             <View style={styles.lowerContainer}>
-                <Button
-                    onPress={importCalendar}
-                >Kalender importieren</Button>
+                <Button onPress={importCalendar}>Kalender importieren</Button>
                 <TouchableOpacity onPress={enterFreeTimeManually}>
                     <Text style={styles.clickableText}>oder manuell eintragen</Text>
                 </TouchableOpacity>
