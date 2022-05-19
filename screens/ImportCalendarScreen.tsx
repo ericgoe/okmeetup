@@ -4,6 +4,7 @@ import Button from '../components/Button'
 import Text from '../components/Text'
 import Colors from '../constants/Colors'
 import { Dimensions } from 'react-native'
+import { RootStackScreenProps } from '../types'
 import LoadingOverlay from '../components/LoadingOverlay'
 
 const screenDimensions = Dimensions.get('screen')
