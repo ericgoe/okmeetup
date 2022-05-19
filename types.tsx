@@ -17,6 +17,7 @@ declare global {
 export type RootStackParamList = {
     JoinScreen: undefined
     ImportCalendarScreen: undefined
+    IntroScreen: undefined;
     CreateEventScreen: undefined
     Root: NavigatorScreenParams<RootTabParamList> | undefined;
     Modal: undefined;

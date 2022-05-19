@@ -1,13 +1,30 @@
-import React from 'react'
-import { StyleSheet, Text, Image, View, TouchableOpacity } from "react-native"
+import React, { useState } from 'react'
+import { StyleSheet, Image, View, TouchableOpacity } from 'react-native'
+import Button from '../components/Button'
+import Text from '../components/Text'
+import Colors from '../constants/Colors'
 import { Dimensions } from 'react-native'
-import Button from '../components/Button';
-import Colors from '../constants/Colors';
+import { RootStackScreenProps } from '../types'
+import LoadingOverlay from '../components/LoadingOverlay'
 
+const screenDimensions = Dimensions.get('screen')
 
 const ImportCalendarScreen = () => {
+    const [isLoading, setLoading] = useState(false)
+
+    const importCalendar = () => {
+        console.log("import Calendar");
+        setLoading(true)
+        setTimeout(() => { setLoading(false) }, 1500)
+    }
+
+    const enterFreeTimeManually = () => {
+        console.log("enterFreeTimeManually");
+    }
+
     return (
         <View style={styles.container}>
+            <LoadingOverlay show={isLoading} />
             <View style={styles.upperContainer}>
                 <Image source={require('../assets/images/calendar-icon.png')} />
                 <Text style={styles.text}>
@@ -15,9 +32,7 @@ const ImportCalendarScreen = () => {
                 </Text>
             </View>
             <View style={styles.lowerContainer}>
-                <Button
-                    onPress={importCalendar}
-                >Kalender importieren</Button>
+                <Button onPress={importCalendar}>Kalender importieren</Button>
                 <TouchableOpacity onPress={enterFreeTimeManually}>
                     <Text style={styles.clickableText}>oder manuell eintragen</Text>
                 </TouchableOpacity>
@@ -26,55 +41,40 @@ const ImportCalendarScreen = () => {
     )
 }
 
-const importCalendar = () => {
-    console.log("import Calendar");
-}
-
-const enterFreeTimeManually = () => {
-    console.log("enterFreeTimeManually");
-}
-
 const styles = StyleSheet.create({
     container: {
-        height: "100%",
-        width: "100%",
-        flexDirection: "column",
-        justifyContent: 'space-between',
+        width: screenDimensions.width,
+        height: screenDimensions.height,
+        flexDirection: 'column',
         alignItems: 'center',
-        alignContent: 'center'
+        alignContent: 'center',
     },
 
     upperContainer: {
-        marginVertical: "5%",
-        height: "60%",
-        width: "100%",
+        marginTop: '20%',
         justifyContent: 'space-around',
         justifySelf: 'center',
         alignItems: 'center',
     },
 
     lowerContainer: {
-        marginBottom: "10%",
-        height: "22.5%",
-        width: "80%",
+        marginTop: '20%',
         position: 'relative',
-        alignself: 'end',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
     },
 
     text: {
-        color: Colors.text,
         textAlign: 'center',
-        fontFamily: 'cantarell-regular'
+        marginTop: '10%',
     },
 
-    clickableText:{
+    clickableText: {
         fontSize: 20,
         fontFamily: 'cantarell-regular',
         color: Colors.primary,
         textAlign: 'center',
         textDecorationLine: 'underline',
-    }
+    },
 
 })
 
