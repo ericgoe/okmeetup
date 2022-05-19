@@ -5,8 +5,6 @@ import {
     Text,
     TextInput as _TextInput,
     TextStyle,
-    TouchableOpacity,
-    ViewStyle,
 } from 'react-native'
 import colors from '../constants/Colors'
 
