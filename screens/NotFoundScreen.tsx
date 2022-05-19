@@ -1,4 +1,5 @@
-import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import Text from '../components/Text';
 
 import { RootStackScreenProps } from '../types';
 

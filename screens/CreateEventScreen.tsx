@@ -1,9 +1,10 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import Button from '../components/Button'
 import DatePicker from '../components/DatePicker'
 import TextInput from '../components/InputField'
+import Text from '../components/Text'
 import Colors from '../constants/Colors'
 
 const CreateEventScreen = () => {
