@@ -63,9 +63,7 @@ const styles = StyleSheet.create({
     },
 
     text: {
-        color: Colors.text,
         textAlign: 'center',
-        fontFamily: 'cantarell-regular'
     },
 
     clickableText: {

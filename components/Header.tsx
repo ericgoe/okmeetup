@@ -22,7 +22,7 @@ const Header = (props: HeaderProps) => {
 const styles = StyleSheet.create({
     header: {
         fontSize: 32,
-        textcolor: colors.text,
+        color: colors.text,
         fontFamily: 'cantarell-bold'
     },
 })

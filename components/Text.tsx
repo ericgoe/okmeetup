@@ -9,12 +9,12 @@ import Colors from '../constants/Colors';
 const Text = (props: DefaultText['props']) => {
     const { style, ...otherProps } = props;
 
-    return <DefaultText style={[styles.text, style]} {...otherProps} />;
+    return <DefaultText style={[styles.text, style || {}]} {...otherProps} />;
 }
 
 const styles = StyleSheet.create({
     text: {
-        textcolor: Colors.text,
+        color: Colors.text,
         fontFamily: 'cantarell-regular'
     },
 })
