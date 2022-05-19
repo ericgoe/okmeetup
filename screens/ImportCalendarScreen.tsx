@@ -4,15 +4,16 @@ import Button from '../components/Button'
 import Text from '../components/Text'
 import Colors from '../constants/Colors'
 import { Dimensions } from 'react-native'
+import { RootStackScreenProps } from '../types'
 
 const screenDimensions = Dimensions.get('screen')
 
 
-const ImportCalendarScreen = () => {
+const ImportCalendarScreen = ({navigation}: RootStackScreenProps<'ImportCalendarScreen'>) => {
 	return (
 		<View style={styles.container}>
 			<View style={styles.upperContainer}>
-				<Image source={require('../assets/images/calendar-icon.png')} />
+				<Image source={require('../assets/images/calendar-icon-white-png-18.jpg')} />
 				<Text style={styles.text}>
 					Importiere deinen Kalender, damit wir deine freien Zeiten eintragen können.
 				</Text>
