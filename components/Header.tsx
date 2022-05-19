@@ -26,3 +26,5 @@ const styles = StyleSheet.create({
         fontFamily: 'cantarell-bold'
     },
 })
+
+export default Header
