@@ -15,6 +15,7 @@ declare global {
 }
 
 export type RootStackParamList = {
+    InviteUsersScreen: undefined
     ImportCalendarScreen: undefined
     IntroScreen: undefined;
     CreateEventScreen: undefined

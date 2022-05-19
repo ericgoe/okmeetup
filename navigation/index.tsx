@@ -10,6 +10,7 @@ import { ColorSchemeName } from 'react-native'
 import CustomTheme from '../constants/CustomTheme'
 import CreateEventScreen from '../screens/CreateEventScreen'
 import ImportCalendarScreen from '../screens/ImportCalendarScreen'
+import InviteUsersScreen from '../screens/InviteUsersScreen';
 import NotFoundScreen from '../screens/NotFoundScreen'
 import { RootStackParamList } from '../types'
 import LinkingConfiguration from './LinkingConfiguration'
@@ -39,6 +40,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>()
 function RootNavigator() {
 	return (
 		<Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="InviteUsersScreen" component={InviteUsersScreen} />
 			<Stack.Screen name='IntroScreen' component={IntroScreen} />
 			<Stack.Screen name='ImportCalendarScreen' component={ImportCalendarScreen} />
 			<Stack.Screen name='CreateEventScreen' component={CreateEventScreen} />
