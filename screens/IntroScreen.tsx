@@ -1,8 +1,9 @@
 import React from 'react'
-import { View, Text, StyleSheet, Image, TouchableOpacity, TextInput, Button, Pressable } from 'react-native'
-import EditScreenInfo from '../components/EditScreenInfo'
+import { View, Text, StyleSheet, Image, TouchableOpacity, TextInput, Pressable } from 'react-native'
 import { RootStackScreenProps } from '../types'
 import { Dimensions } from 'react-native'
+import Button from '../components/Button'
+import Colors from '../constants/Colors'
 
 const screenWidth = Dimensions.get('screen')
 
@@ -13,12 +14,9 @@ const IntroScreen = ({ navigation }: RootStackScreenProps<'IntroScreen'>) => {
 				<Image style={styles.logo} source={require('../assets/images/logo.png')} />
 			</View>
 			<View style={styles.buttonContainer}>
-				<Pressable style={styles.button}>
-					<Text style={styles.buttonText}>Erstellen</Text>
-				</Pressable>
-				<Pressable style={styles.button}>
-					<Text style={styles.buttonText}>Beitreten</Text>
-				</Pressable>
+				<Button onPress={() => navigation.navigate('CreateEventScreen')}>Erstellen</Button>
+				<Button onPress={() => navigation.navigate('ImportCalendarScreen')}>Beitreten</Button>
+				<Button onPress={() => navigation.navigate('ImportCalendarScreen')}>Deine Events</Button>
 			</View>
 			<View style={styles.textContainer}>
 				<Text style={styles.text}>
@@ -44,23 +42,9 @@ const styles = StyleSheet.create({
 	},
 	buttonContainer: {
 		flexDirection: 'column',
-		justifyContent: 'space-between',
-		marginTop: '50%',
+		marginTop: '40%',
 		marginBottom: '10%',
-	},
-	button: {
-		flex: 1,
-		width: screenWidth.width - 40,
-		maxHeight: screenWidth.height / 14,
-		backgroundColor: '#0284a5',
-		margin: 10,
-		justifyContent: 'center',
-		borderRadius: 50,
-	},
-	buttonText: {
-		fontSize: 20,
-		textAlign: 'center',
-		color: 'white',
+		justifyContent: 'space-between',
 	},
 	textContainer: {
 		marginTop: '10%',
