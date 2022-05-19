@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
-import { StyleSheet, Image, View, TouchableOpacity } from "react-native"
-import Button from '../components/Button';
-import LoadingOverlay from '../components/LoadingOverlay';
-import Text from '../components/Text';
-import Colors from '../constants/Colors';
+import { StyleSheet, Image, View, TouchableOpacity } from 'react-native'
+import Button from '../components/Button'
+import Text from '../components/Text'
+import Colors from '../constants/Colors'
+import { Dimensions } from 'react-native'
+import LoadingOverlay from '../components/LoadingOverlay'
+
+const screenDimensions = Dimensions.get('screen')
 
 const ImportCalendarScreen = () => {
     const [isLoading, setLoading] = useState(false)
@@ -39,34 +42,29 @@ const ImportCalendarScreen = () => {
 
 const styles = StyleSheet.create({
     container: {
-        height: "100%",
-        width: "100%",
-        flexDirection: "column",
-        justifyContent: 'space-between',
+        width: screenDimensions.width,
+        height: screenDimensions.height,
+        flexDirection: 'column',
         alignItems: 'center',
-        alignContent: 'center'
+        alignContent: 'center',
     },
 
     upperContainer: {
-        marginVertical: "5%",
-        height: "60%",
-        width: "100%",
+        marginTop: '20%',
         justifyContent: 'space-around',
         justifySelf: 'center',
         alignItems: 'center',
     },
 
     lowerContainer: {
-        marginBottom: "10%",
-        height: "22.5%",
-        width: "80%",
+        marginTop: '20%',
         position: 'relative',
-        alignself: 'end',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
     },
 
     text: {
         textAlign: 'center',
+        marginTop: '10%',
     },
 
     clickableText: {
@@ -75,7 +73,7 @@ const styles = StyleSheet.create({
         color: Colors.primary,
         textAlign: 'center',
         textDecorationLine: 'underline',
-    }
+    },
 
 })
 
