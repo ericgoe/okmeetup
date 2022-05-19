@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
 		backgroundColor: '#393942',
 	},
 	logoContainer: {
-		marginTop: '30%',
+		marginTop: '20%',
 	},
 	logo: {
 		resizeMode: 'contain',
@@ -42,12 +42,11 @@ const styles = StyleSheet.create({
 	},
 	buttonContainer: {
 		flexDirection: 'column',
-		marginTop: '40%',
-		marginBottom: '10%',
+		marginTop: '20%',
 		justifyContent: 'space-between',
 	},
 	textContainer: {
-		marginTop: '10%',
+		marginTop: '20%',
 	},
 	text: {
 		fontSize: 15,
