@@ -1,13 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, Image, View, TouchableOpacity } from "react-native"
 import Button from '../components/Button';
+import LoadingOverlay from '../components/LoadingOverlay';
 import Text from '../components/Text';
 import Colors from '../constants/Colors';
 
-
 const ImportCalendarScreen = () => {
+    const [isLoading, setLoading] = useState(false)
+
+    const importCalendar = () => {
+        console.log("import Calendar");
+        setLoading(true)
+        setTimeout(() => { setLoading(false) }, 1500)
+    }
+
+    const enterFreeTimeManually = () => {
+        console.log("enterFreeTimeManually");
+    }
+
     return (
         <View style={styles.container}>
+            <LoadingOverlay show={isLoading} />
             <View style={styles.upperContainer}>
                 <Image source={require('../assets/images/calendar-icon.png')} />
                 <Text style={styles.text}>
@@ -22,14 +35,6 @@ const ImportCalendarScreen = () => {
             </View>
         </View>
     )
-}
-
-const importCalendar = () => {
-    console.log("import Calendar");
-}
-
-const enterFreeTimeManually = () => {
-    console.log("enterFreeTimeManually");
 }
 
 const styles = StyleSheet.create({
