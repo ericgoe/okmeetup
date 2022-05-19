@@ -1,23 +1,29 @@
 import React from 'react'
-import { StyleSheet, Text } from 'react-native'
+import {
+    StyleProp,
+    StyleSheet,
+    Text,
+    TextInput as _TextInput,
+    TextStyle,
+} from 'react-native'
+import colors from '../constants/Colors'
 
-const Header = () => {
+type HeaderProps = {
+    children: string
+    textStyle?: StyleProp<TextStyle>
+}
+
+const Header = (props: HeaderProps) => {
     return (
-        <Text
-            style={styles.header}
-        >
-            Text
-        </Text>
+        <Text style={[props.textStyle, styles.header]}>{props.children}</Text>
     )
 }
 
 const styles = StyleSheet.create({
     header: {
-        /*
-        fontFamily: 'cantarell-regular'
-            ODER
+        fontSize: 32,
+        color: colors.text,
         fontFamily: 'cantarell-bold'
-        */
     },
 })
 

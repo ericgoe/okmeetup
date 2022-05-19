@@ -3,7 +3,6 @@ import {
     Alert,
     Platform,
     StyleSheet,
-    Text,
     TextInput as _TextInput,
     TouchableOpacity,
     ViewStyle,
@@ -11,6 +10,7 @@ import {
 import Colors from '../constants/Colors'
 import { DateTimePickerAndroid } from '@react-native-community/datetimepicker'
 import { DateTime } from 'luxon'
+import Text from './Text'
 
 type DatePickerProps = {
     placeholder?: string

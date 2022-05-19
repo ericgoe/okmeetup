@@ -1,7 +1,7 @@
 import React from 'react'
-import { StyleSheet, Text, Image, View, TouchableOpacity } from "react-native"
-import { Dimensions } from 'react-native'
+import { StyleSheet, Image, View, TouchableOpacity } from "react-native"
 import Button from '../components/Button';
+import Text from '../components/Text';
 import Colors from '../constants/Colors';
 
 
@@ -61,12 +61,10 @@ const styles = StyleSheet.create({
     },
 
     text: {
-        color: Colors.text,
         textAlign: 'center',
-        fontFamily: 'cantarell-regular'
     },
 
-    clickableText:{
+    clickableText: {
         fontSize: 20,
         fontFamily: 'cantarell-regular',
         color: Colors.primary,
