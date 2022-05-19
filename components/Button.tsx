@@ -2,13 +2,13 @@ import React from 'react'
 import {
     StyleProp,
     StyleSheet,
-    Text,
     TextInput as _TextInput,
     TextStyle,
     TouchableOpacity,
     ViewStyle,
 } from 'react-native'
 import Colors from '../constants/Colors'
+import Text from './Text'
 
 type ButtonProps = {
     children: string
