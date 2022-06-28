@@ -1,34 +1,48 @@
-import React from 'react'
-import { View, Text, StyleSheet, Image, TouchableOpacity, TextInput, Button, Pressable } from 'react-native'
+import React, { useState } from 'react'
+import { View, Text, StyleSheet } from 'react-native'
 import { RootStackScreenProps } from '../types'
 import { Dimensions } from 'react-native'
 import Colors from '../constants/Colors'
 import EventCodeInput from '../components/EventCodeInput'
+import LoadingOverlay from '../components/LoadingOverlay'
 
 const screenDimensions = Dimensions.get('screen')
 
 const IntroScreen = ({ navigation }: RootStackScreenProps<'JoinScreen'>) => {
-	return (
+    const [isLoading, setLoading] = useState(false)
+    const processEventCode = (code: string) => {
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+            navigation.navigate('ImportCalendarScreen')
+        }, 1500)
+    }
+
+    return (
         <View style={styles.mainContainer}>
+            <LoadingOverlay
+                show={isLoading}
+            />
             <View style={styles.upperContainer}>
                 {/* <View> */}
-                    <Text style={styles.header}>
-                        Wie lautet der 6-stellige Code des Events?
-                    </Text>        
+                <Text style={styles.header}>
+                    Wie lautet der 6-stellige Code des Events?
+                </Text>
                 {/* </View> */}
                 {/* <View> */}
-                    <Text style={styles.description}>
-                        Der Code ist eine Kombination von 6 Zahlen oder Namen. 
-                        Die erstellende Person des Events sollte den Code haben. 
-                    </Text>
+                <Text style={styles.description}>
+                    Der Code ist eine Kombination von 6 Zahlen oder Namen.
+                    Die erstellende Person des Events sollte den Code haben.
+                </Text>
                 {/* </View> */}
             </View>
             <View style={styles.lowerContainer}>
-                <EventCodeInput></EventCodeInput>
-            </View>
-        </View>
-
-    ) 
+                <EventCodeInput
+                    onSelect={processEventCode}
+                ></EventCodeInput>
+            </View >
+        </View >
+    )
 }
 
 const styles = StyleSheet.create({
@@ -44,8 +58,7 @@ const styles = StyleSheet.create({
         marginLeft: '10%',
         marginRight: '10%',
         flexDirection: 'column',
-        // justifyContent: 'space-evenly',
-      justifyContent: 'center',
+        justifyContent: 'center',
     },
     header: {
         fontSize: 32,
