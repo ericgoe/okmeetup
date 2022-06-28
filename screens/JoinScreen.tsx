@@ -23,7 +23,8 @@ const IntroScreen = ({ navigation }: RootStackScreenProps<'JoinScreen'>) => {
 
 const styles = StyleSheet.create({
     container: {
-
+        flex: 1,
+        alignItems: 'center',
     },
     header: {
 
@@ -35,3 +36,5 @@ const styles = StyleSheet.create({
 
     },
 })
+
+export default IntroScreen

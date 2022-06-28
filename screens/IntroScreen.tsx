@@ -15,7 +15,7 @@ const IntroScreen = ({ navigation }: RootStackScreenProps<'IntroScreen'>) => {
 			</View>
 			<View style={styles.buttonContainer}>
 				<Button onPress={() => navigation.navigate('CreateEventScreen')}>Erstellen</Button>
-				<Button onPress={() => navigation.navigate('ImportCalendarScreen')}>Beitreten</Button>
+				<Button onPress={() => navigation.navigate('JoinScreen')}>Beitreten</Button>
 				<Button onPress={() => navigation.navigate('ImportCalendarScreen')}>Deine Events</Button>
 			</View>
 			<View style={styles.textContainer}>
