@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { Alert, StyleSheet, View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import Button from '../components/Button'
 import DatePicker from '../components/DatePicker'
@@ -27,7 +27,7 @@ const CreateEventScreen = () => {
 
             <Button
                 onPress={() => {
-                    console.log('Next screen')
+                    Alert.alert('navigate to \'InviteUserScreen\'')
                 }}
             >Absenden</Button>
         </KeyboardAwareScrollView>
