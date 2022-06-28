@@ -15,20 +15,22 @@ import { RootStackParamList } from '../types'
 import LinkingConfiguration from './LinkingConfiguration'
 import IntroScreen from '../screens/IntroScreen'
 import JoinScreen from '../screens/JoinScreen'
+import EventListScreen from '../screens/EventListScreen'
 
 
 type NavigationProps = {
-	colorScheme: ColorSchemeName
+    colorScheme: ColorSchemeName
 }
 
 export default function Navigation(props: NavigationProps) {
-	return (
-		<NavigationContainer
-			linking={LinkingConfiguration}
-			theme={CustomTheme}>
-			<RootNavigator />
-		</NavigationContainer>
-	)
+    return (
+        <NavigationContainer
+            linking={LinkingConfiguration}
+            theme={CustomTheme}>
+            <RootNavigator />
+        </NavigationContainer>
+
+    )
 }
 
 /**
@@ -44,6 +46,7 @@ function RootNavigator() {
 			<Stack.Screen name='JoinScreen' component={JoinScreen} />
 			<Stack.Screen name='ImportCalendarScreen' component={ImportCalendarScreen} />
 			<Stack.Screen name='CreateEventScreen' component={CreateEventScreen} />
+            <Stack.Screen name='EventListScreen' component={EventListScreen} />
 			<Stack.Screen name='Root' component={NotFoundScreen} options={{ title: 'Oops!' }} />
 		</Stack.Navigator>
 	)
