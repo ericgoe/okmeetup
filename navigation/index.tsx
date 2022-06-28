@@ -14,6 +14,7 @@ import NotFoundScreen from '../screens/NotFoundScreen'
 import { RootStackParamList } from '../types'
 import LinkingConfiguration from './LinkingConfiguration'
 import IntroScreen from '../screens/IntroScreen'
+import SelectFreeTimeScreen from '../screens/SelectFreeTimeScreen'
 
 
 type NavigationProps = {
@@ -42,6 +43,7 @@ function RootNavigator() {
 			<Stack.Screen name='IntroScreen' component={IntroScreen} />
 			<Stack.Screen name='ImportCalendarScreen' component={ImportCalendarScreen} />
 			<Stack.Screen name='CreateEventScreen' component={CreateEventScreen} />
+			<Stack.Screen name='SelectFreeTimeScreen' component={SelectFreeTimeScreen} />
 			<Stack.Screen name='Root' component={NotFoundScreen} options={{ title: 'Oops!' }} />
 		</Stack.Navigator>
 	)
