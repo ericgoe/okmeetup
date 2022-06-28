@@ -1,28 +1,29 @@
-import React, { useState } from 'react';
-import { SafeAreaView, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react'
+import { SafeAreaView, Text, StyleSheet } from 'react-native'
 import {
     CodeField,
     Cursor,
     useBlurOnFulfill,
     useClearByFocusCell,
-} from 'react-native-confirmation-code-field';
+} from 'react-native-confirmation-code-field'
 
 type EventCodeInputProps = {
     cellCount?: number | undefined
-    onSelect: (code: string) => void
+    onSelect?: (code: string) => void
+    readOnlyValue?: string
 }
 
 const EventCodeInput = (props: EventCodeInputProps) => {
     const cellCount = props.cellCount || 6
-    const [value, setValue] = useState('');
-    const ref = useBlurOnFulfill({ value, cellCount });
+    const [value, setValue] = useState('')
+    const ref = useBlurOnFulfill({ value, cellCount })
     const [nativeProps, getCellOnLayoutHandler] = useClearByFocusCell({
         value,
         setValue,
     });
 
     const setValueCallback = (value: string) => {
-        if (value.length === cellCount) props.onSelect(value)
+        if (value.length === cellCount && props.onSelect) props.onSelect(value)
 
         setValue(value)
     }
@@ -33,7 +34,7 @@ const EventCodeInput = (props: EventCodeInputProps) => {
                 ref={ref}
                 {...nativeProps}
                 // Use `caretHidden={false}` when users can't paste a text value, because context menu doesn't appear
-                value={value}
+                value={props.readOnlyValue ? props.readOnlyValue : value}
                 onChangeText={setValueCallback}
                 cellCount={cellCount}
                 rootStyle={styles.codeFieldRoot}
@@ -47,6 +48,7 @@ const EventCodeInput = (props: EventCodeInputProps) => {
                         {symbol || (isFocused ? <Cursor /> : null)}
                     </Text>
                 )}
+                editable={!props.readOnlyValue}
             />
         </SafeAreaView>
     );

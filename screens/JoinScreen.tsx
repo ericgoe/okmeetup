@@ -24,17 +24,13 @@ const IntroScreen = ({ navigation }: RootStackScreenProps<'JoinScreen'>) => {
                 show={isLoading}
             />
             <View style={styles.upperContainer}>
-                {/* <View> */}
                 <Text style={styles.header}>
                     Wie lautet der 6-stellige Code des Events?
                 </Text>
-                {/* </View> */}
-                {/* <View> */}
                 <Text style={styles.description}>
                     Der Code ist eine Kombination von 6 Zahlen oder Namen.
                     Die erstellende Person des Events sollte den Code haben.
                 </Text>
-                {/* </View> */}
             </View>
             <View style={styles.lowerContainer}>
                 <EventCodeInput
