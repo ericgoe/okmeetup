@@ -19,7 +19,6 @@ import {
   
     return (
       <SafeAreaView style={styles.root}>
-        <Text style={styles.title}>Verification</Text>
         <CodeField
           ref={ref}
           {...props}
@@ -44,17 +43,27 @@ import {
   };
   
 const styles = StyleSheet.create({
-    root: {flex: 1, padding: 20},
-    title: {textAlign: 'center', fontSize: 30},
-    codeFieldRoot: {marginTop: 20},
+    root: {
+      flex: 1, 
+      padding: 20
+    },
+    title: {
+      textAlign: 'center', 
+      fontSize: 30
+    },
+    codeFieldRoot: {
+      marginTop: 20,
+    },
     cell: {
       width: 40,
       height: 40,
       lineHeight: 38,
       fontSize: 24,
+      color: 'white',
       borderWidth: 2,
-      borderColor: '#00000030',
+      borderColor: 'white',
       textAlign: 'center',
+      margin: 2,
     },
     focusCell: {
       borderColor: '#000',
