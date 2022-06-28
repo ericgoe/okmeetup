@@ -42,11 +42,11 @@ const Stack = createNativeStackNavigator<RootStackParamList>()
 function RootNavigator() {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="InviteUsersScreen" component={InviteUsersScreen} />
             <Stack.Screen name='IntroScreen' component={IntroScreen} />
             <Stack.Screen name='ImportCalendarScreen' component={ImportCalendarScreen} />
             <Stack.Screen name='CreateEventScreen' component={CreateEventScreen} />
             <Stack.Screen name='EventListScreen' component={EventListScreen} />
-            <Stack.Screen name="InviteUsersScreen" component={InviteUsersScreen} />
             <Stack.Screen name='Root' component={NotFoundScreen} options={{ title: 'Oops!' }} />
         </Stack.Navigator>
     )
