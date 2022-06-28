@@ -6,6 +6,7 @@ import Colors from '../constants/Colors'
 import { Dimensions } from 'react-native'
 import LoadingOverlay from '../components/LoadingOverlay'
 import Navigation from '../navigation'
+import { RootStackScreenProps } from '../types'
 
 const screenDimensions = Dimensions.get('screen')
 
