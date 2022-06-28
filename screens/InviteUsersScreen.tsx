@@ -16,12 +16,15 @@ const InviteUsersScreen = () => {
                 <Text style={styles.congratulationText}>Herzlichen Glückwunsch! Du hast erfolgreich
                     ein Event erstellt</Text>
                 <Text style={styles.text}>Um Teilnehmer einladen zu können musst du den 6-stelligen Code mit den Teilnehmern teilen.</Text>
-                <Text>Der 6-stellige Code:</Text>
             </View>
-            <View style={styles.lowerContainer}>
+            <View style={styles.middleContainer}>
+                <Text>Der 6-stellige Code:</Text>
                 <EventCodeInput
                     readOnlyValue='xL33Tx'
                 />
+            </View>
+
+            <View style={styles.lowerContainer}>
                 <Button onPress={shareCode}>Code teilen</Button>
             </View>
         </View>
@@ -36,27 +39,33 @@ const styles = StyleSheet.create({
     screen: {
         width: screenDimensions.width,
         height: screenDimensions.height,
-        backgroundColor: '#ff0000',
         flexDirection: 'column',
     },
 
     upperContainer: {
-        backgroundColor: Colors.primary,
+        height: '40%',
         margin: '10%',
-        marginTop: 100,
+        marginTop: '15%',
+        marginBottom: 0,
+    },
+
+    middleContainer: {
+        height: '10%',
+        margin: '10%',
+        marginTop: '0%',
     },
 
     lowerContainer: {
-        backgroundColor: '#000000',
-        height: 250,
+        height: 185,
         margin: '5.5%',
+        marginTop: '25%',
         justifyContent: 'center',
         alignContent: 'center',
     },
 
     text: {
         textAlign: 'justify',
-        marginTop: '10%',
+        marginTop: '15%',
         marginBottom: '10%',
     },
 
