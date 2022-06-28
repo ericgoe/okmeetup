@@ -28,23 +28,23 @@ const dummyProps: EventListScreenProps = {
 const screenWidth = Dimensions.get('screen')
 
 const IntroScreen = ({ navigation }: RootStackScreenProps<'IntroScreen'>) => {
-    return (
-        <View style={styles.container}>
-            <View style={styles.logoContainer}>
-                <Image style={styles.logo} source={require('../assets/images/logo.png')} />
-            </View>
-            <View style={styles.buttonContainer}>
-                <Button onPress={() => navigation.navigate('CreateEventScreen')}>Erstellen</Button>
-                <Button onPress={() => navigation.navigate('ImportCalendarScreen')}>Beitreten</Button>
+	return (
+		<View style={styles.container}>
+			<View style={styles.logoContainer}>
+				<Image style={styles.logo} source={require('../assets/images/logo.png')} />
+			</View>
+			<View style={styles.buttonContainer}>
+				<Button onPress={() => navigation.navigate('CreateEventScreen')}>Erstellen</Button>
+				<Button onPress={() => navigation.navigate('JoinScreen')}>Beitreten</Button>
                 <Button onPress={() => navigation.navigate('EventListScreen', dummyProps)}>Deine Events</Button>
-            </View>
-            <View style={styles.textContainer}>
-                <Text style={styles.text}>
-                    Deine <Text style={styles.textHighlight}>Daten</Text> gehören dir!
-                </Text>
-            </View>
-        </View>
-    )
+			</View>
+			<View style={styles.textContainer}>
+				<Text style={styles.text}>
+					Deine <Text style={styles.textHighlight}>Daten</Text> gehören dir!
+				</Text>
+			</View>
+		</View>
+	)
 }
 const styles = StyleSheet.create({
     container: {
