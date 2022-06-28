@@ -14,20 +14,22 @@ import NotFoundScreen from '../screens/NotFoundScreen'
 import { RootStackParamList } from '../types'
 import LinkingConfiguration from './LinkingConfiguration'
 import IntroScreen from '../screens/IntroScreen'
+import EventListScreen from '../screens/EventListScreen'
 
 
 type NavigationProps = {
-	colorScheme: ColorSchemeName
+    colorScheme: ColorSchemeName
 }
 
 export default function Navigation(props: NavigationProps) {
-	return (
-		<NavigationContainer
-			linking={LinkingConfiguration}
-			theme={CustomTheme}>
-			<RootNavigator />
-		</NavigationContainer>
-	)
+    return (
+        <NavigationContainer
+            linking={LinkingConfiguration}
+            theme={CustomTheme}>
+            <RootNavigator />
+        </NavigationContainer>
+
+    )
 }
 
 /**
@@ -37,12 +39,13 @@ export default function Navigation(props: NavigationProps) {
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
 function RootNavigator() {
-	return (
-		<Stack.Navigator screenOptions={{ headerShown: false }}>
-			<Stack.Screen name='IntroScreen' component={IntroScreen} />
-			<Stack.Screen name='ImportCalendarScreen' component={ImportCalendarScreen} />
-			<Stack.Screen name='CreateEventScreen' component={CreateEventScreen} />
-			<Stack.Screen name='Root' component={NotFoundScreen} options={{ title: 'Oops!' }} />
-		</Stack.Navigator>
-	)
+    return (
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name='IntroScreen' component={IntroScreen} />
+            <Stack.Screen name='ImportCalendarScreen' component={ImportCalendarScreen} />
+            <Stack.Screen name='CreateEventScreen' component={CreateEventScreen} />
+            <Stack.Screen name='EventListScreen' component={EventListScreen} />
+            <Stack.Screen name='Root' component={NotFoundScreen} options={{ title: 'Oops!' }} />
+        </Stack.Navigator>
+    )
 }
