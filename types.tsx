@@ -6,7 +6,7 @@
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { StyleSheet } from 'react-native';
+import { EventListScreenProps } from './screens/EventListScreen';
 
 declare global {
     namespace ReactNavigation {
@@ -18,6 +18,7 @@ export type RootStackParamList = {
     InviteUsersScreen: undefined
     ImportCalendarScreen: undefined
     IntroScreen: undefined;
+    EventListScreen: EventListScreenProps;
     CreateEventScreen: undefined
     Root: NavigatorScreenParams<RootTabParamList> | undefined;
     Modal: undefined;
