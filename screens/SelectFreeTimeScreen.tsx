@@ -11,17 +11,23 @@ let screenDimensions = Dimensions.get('screen')
 
 const currentDate = new Date()
 
-const loadCalendarEvents = async () => {
-	await Calendar.getCalendarPermissionsAsync()
-	await Calendar.requestCalendarPermissionsAsync()
-	await Calendar.getCalendarsAsync()
-	const getEvents = await Calendar.getEventsAsync(['6'], new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()), new Date(currentDate.getFullYear(), currentDate.getMonth() + 2, currentDate.getDate()))
-	console.log('Events from ' + new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()) + 'to ' + new Date(currentDate.getFullYear(), currentDate.getMonth() + 2, currentDate.getDate()))
-	console.log(getEvents.map(event => event.title + ' ' + (new Date(event.startDate)).toISOString().slice(0, 10) + ' to ' + (new Date(event.endDate)).toISOString().slice(0, 10)))
-}
 
 const SelectFreeTimeScreen = ({ navigation }: RootStackScreenProps<'SelectFreeTimeScreen'>) => {
-	loadCalendarEvents()
+	const loadCalendarEvents = async () => {
+		await Calendar.getCalendarPermissionsAsync()
+		await Calendar.requestCalendarPermissionsAsync()
+		await getCalendars()
+		const getEvents = await Calendar.getEventsAsync(['6'], new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()), new Date(currentDate.getFullYear(), currentDate.getMonth() + 2, currentDate.getDate()))
+		console.log('Events from ' + new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()) + 'to ' + new Date(currentDate.getFullYear(), currentDate.getMonth() + 2, currentDate.getDate()))
+		console.log(getEvents.map(event => event.title + ' ' + (new Date(event.startDate)).toISOString().slice(0, 10) + ' to ' + (new Date(event.endDate)).toISOString().slice(0, 10)))
+	}
+	const getCalendars = async () => {
+		const calendars = await Calendar.getCalendarsAsync()
+		const entries = calendars.map(calendar => calendar.title)
+		console.log(entries)
+	}
+
+	getCalendars()
 	return (
 		<View style={styles.container}>
 			<View style={styles.upperContainer}>
