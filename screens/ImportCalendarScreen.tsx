@@ -7,6 +7,7 @@ import { Dimensions } from 'react-native'
 import LoadingOverlay from '../components/LoadingOverlay'
 import Navigation from '../navigation'
 import { RootStackScreenProps } from '../types'
+import * as Calendar from 'expo-calendar'
 
 const screenDimensions = Dimensions.get('screen')
 
@@ -17,6 +18,8 @@ const ImportCalendarScreen = ({ navigation }: RootStackScreenProps<'ImportCalend
 
 	const importCalendar = async () => {
 		console.log('import Calendar')
+		await Calendar.getCalendarPermissionsAsync()
+		await Calendar.requestCalendarPermissionsAsync()
 		setLoading(true)
 		await timeout(1000)
 		setLoading(false)
