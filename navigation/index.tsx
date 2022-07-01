@@ -18,6 +18,7 @@ import IntroScreen from '../screens/IntroScreen'
 import SelectFreeTimeScreen from '../screens/SelectFreeTimeScreen'
 import JoinScreen from '../screens/JoinScreen'
 import EventListScreen from '../screens/EventListScreen'
+import ShowImportedEventsScreen from '../screens/ShowImportedEventsScreen'
 
 
 type NavigationProps = {
@@ -51,6 +52,7 @@ function RootNavigator() {
             <Stack.Screen name='EventListScreen' component={EventListScreen} />
             <Stack.Screen name="InviteUsersScreen" component={InviteUsersScreen} />
             <Stack.Screen name='SelectFreeTimeScreen' component={SelectFreeTimeScreen} />
+            <Stack.Screen name='ShowImportedEventsScreen' component={ShowImportedEventsScreen}/>
 			<Stack.Screen name='Root' component={NotFoundScreen} options={{ title: 'Oops!' }} />
         </Stack.Navigator>
     )
