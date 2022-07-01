@@ -6,8 +6,9 @@ import DatePicker from '../components/DatePicker'
 import TextInput from '../components/InputField'
 import Text from '../components/Text'
 import Colors from '../constants/Colors'
+import { RootStackScreenProps } from '../types'
 
-const CreateEventScreen = () => {
+const CreateEventScreen = ({ navigation }: RootStackScreenProps<'CreateEventScreen'>) => {
     return (
         <KeyboardAwareScrollView contentContainerStyle={styles.container}>
             <View>
@@ -26,9 +27,7 @@ const CreateEventScreen = () => {
             </View>
 
             <Button
-                onPress={() => {
-                    Alert.alert('navigate to \'InviteUserScreen\'')
-                }}
+                onPress={() => navigation.navigate('InviteUsersScreen')}
             >Absenden</Button>
         </KeyboardAwareScrollView>
     )
