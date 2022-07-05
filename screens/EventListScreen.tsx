@@ -1,61 +1,81 @@
-import { useRoute } from '@react-navigation/native'
-import React from 'react'
-import { ScrollView, StyleSheet, View } from 'react-native'
+import { DateTime } from 'luxon'
+import React, { useEffect, useState } from 'react'
+import { RefreshControl, ScrollView, StyleSheet, View } from 'react-native'
+import { useSelector } from 'react-redux'
+import { API, fetchEvents } from '../api/api'
+import Button from '../components/Button'
 import Header from '../components/Header'
 import Text from '../components/Text'
 import Colors from '../constants/Colors'
-import { RootStackParamList } from '../types'
-
-type Event = {
-    name: string
-    date: string
-    time: string
-}
-
-export type EventListScreenProps = {
-    events: Event[]
-}
+import { DefaultState } from '../store/store'
 
 const EventListScreen = () => {
-    const params: RootStackParamList['EventListScreen'] = useRoute().params as RootStackParamList['EventListScreen']
+    const [eventData, setEventData] = useState<API.Event[]>([])
+    const [isLoading, setIsLoading] = useState(false)
+    const participantId = useSelector(
+        (state: DefaultState) => state.participantId,
+    ) as string
 
-    const events = params.events.map((event, idx) => (
-        <View
-            key={idx}
-            style={styles.event}
-        >
-            <Text
-                style={{ ...styles.text, ...styles.header }}
-            >
-                {event.name}
-            </Text>
-            <View
-                style={styles.eventTimes}
-            >
-                <Text
-                    style={styles.text}
-                >
-                    {event.date}
+    const reloadEventData = async () => {
+        setIsLoading(true)
+        const eventData = await fetchEvents(participantId)
+        setEventData(eventData)
+        setIsLoading(false)
+    }
+
+    useEffect(() => {
+        const fetch = async () => {
+            setIsLoading(true)
+            const eventData = await fetchEvents(participantId)
+            setEventData(eventData)
+            setIsLoading(false)
+        }
+
+        fetch()
+    }, [])
+
+    const events = eventData.map((event, idx) => {
+        let date: string | null = null
+        let time: string | null = null
+
+        if (event.decidedTime) {
+            date = DateTime.fromJSDate(event.decidedTime).toFormat('dd.mm.yyyy')
+            time = DateTime.fromJSDate(event.decidedTime).toFormat('HH:mm')
+        }
+
+        return (
+            <View key={idx} style={styles.event}>
+                <Text style={{ ...styles.text, ...styles.header }}>
+                    {event.title}
                 </Text>
-                <Text
-                    style={styles.text}
-                >
-                    {event.time}
-                </Text>
+                {event.decidedTime ? (
+                    <View style={styles.eventTimes}>
+                        <Text style={styles.text}>{date}</Text>
+                        <Text style={styles.text}>{time}</Text>
+                    </View>
+                ) : (
+                    <Button
+                        style={styles.button}
+                        onPress={() => console.log('decide now')}
+                    >
+                        Termin jetzt automatisch entscheiden
+                    </Button>
+                )}
             </View>
-
-        </View >
-    ))
+        )
+    })
 
     return (
-        <View
-            style={styles.container}
-        >
-            <Header>
-                Events
-            </Header>
+        <View style={styles.container}>
+            <Header>Events</Header>
             <ScrollView
                 contentContainerStyle={styles.eventContainer}
+                refreshControl={
+                    <RefreshControl
+                        refreshing={isLoading}
+                        onRefresh={reloadEventData}
+                    />
+                }
             >
                 {events}
             </ScrollView>
@@ -64,20 +84,26 @@ const EventListScreen = () => {
 }
 
 const styles = StyleSheet.create({
+    button: {
+        width: '85%',
+        alignSelf: 'center',
+        borderRadius: 5,
+        marginTop: 25,
+    },
     container: {
         height: '100%',
         width: '100%',
-        marginTop: 50
+        marginTop: 50,
     },
     eventContainer: {
-        alignItems: 'center'
+        alignItems: 'center',
     },
     event: {
         backgroundColor: Colors.gray,
         width: '80%',
         marginVertical: 10,
         borderRadius: 20,
-        padding: 15
+        padding: 15,
     },
     header: {
         alignSelf: 'center',
@@ -91,7 +117,7 @@ const styles = StyleSheet.create({
         borderTopWidth: 1,
         paddingTop: 10,
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
     text: {
         color: Colors.background,

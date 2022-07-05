@@ -4,29 +4,8 @@ import { RootStackScreenProps } from '../types'
 import { Dimensions } from 'react-native'
 import Button from '../components/Button'
 import { useDispatch, useSelector } from 'react-redux'
-import { EventListScreenProps } from './EventListScreen'
 import { DefaultState, setParticipant } from '../store/store'
 import { generateParticipantId } from '../api/api'
-
-const dummyProps: EventListScreenProps = {
-    events: [
-        {
-            name: 'Tennis spielen mit den Jungs',
-            date: '1.1.2022',
-            time: '12:00',
-        },
-        {
-            name: 'Volleyball',
-            date: '27.6.2022',
-            time: '12:00',
-        },
-        {
-            name: 'Nationalfeiertag',
-            date: '23.6.2022',
-            time: '12:00',
-        },
-    ],
-}
 
 const screenWidth = Dimensions.get('screen')
 
@@ -68,11 +47,7 @@ const IntroScreen = ({ navigation }: RootStackScreenProps<'IntroScreen'>) => {
                 <Button onPress={() => navigation.navigate('JoinScreen')}>
                     Beitreten
                 </Button>
-                <Button
-                    onPress={() =>
-                        navigation.navigate('EventListScreen', dummyProps)
-                    }
-                >
+                <Button onPress={() => navigation.navigate('EventListScreen')}>
                     Deine Events
                 </Button>
             </View>

@@ -1,8 +1,7 @@
 import React from 'react'
 import { Dimensions } from 'react-native'
 
-
-const screenWidth = Dimensions.get('screen');
+const screenWidth = Dimensions.get('screen')
 
 import {
     StyleProp,
@@ -24,8 +23,13 @@ type ButtonProps = {
 
 const Button = (props: ButtonProps) => {
     return (
-        <TouchableOpacity style={[styles.button, props.style]} onPress={props.onPress}>
-            <Text style={[props.textStyle, styles.buttonText]}>{props.children}</Text>
+        <TouchableOpacity
+            style={[styles.button, props.style]}
+            onPress={props.onPress}
+        >
+            <Text style={[props.textStyle, styles.buttonText]}>
+                {props.children}
+            </Text>
         </TouchableOpacity>
     )
 }
