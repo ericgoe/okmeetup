@@ -53,8 +53,7 @@ const ShowImportedEventsScreen = ({ navigation }: RootStackScreenProps<'ShowImpo
 		<ScrollView contentContainerStyle={styles.container}>
 			{render}
 			<View style={styles.buttonContainer}>
-				<Button style={styles.button}
-						onPress={() => getUnselectedEvents()}>Bestätigen</Button>
+				<Button onPress={() => getUnselectedEvents()}>Bestätigen</Button>
 			</View>
 		</ScrollView>
 	)
@@ -85,6 +84,7 @@ const styles = StyleSheet.create({
 	},
 	buttonContainer: {
 		marginTop: '10%',
+		marginBottom: '10%',
 	},
 })
 export default ShowImportedEventsScreen
