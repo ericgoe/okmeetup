@@ -5,7 +5,6 @@ import * as Calendar from 'expo-calendar'
 import Button from '../components/Button'
 import colors from '../constants/Colors'
 import Colors from '../constants/Colors'
-import { useRoute } from '@react-navigation/native'
 
 
 const SelectFreeTimeScreen = ({ navigation }: RootStackScreenProps<'SelectFreeTimeScreen'>) => {
@@ -31,8 +30,8 @@ const SelectFreeTimeScreen = ({ navigation }: RootStackScreenProps<'SelectFreeTi
 	}
 
 	useEffect(() => {
-		getCalendars()
-	})
+		getCalendars().then(r => console.log(r))
+	}, [])
 
 	const render = calendars.map(entry => {
 		const isSelected = selectedIds.includes(entry.id)

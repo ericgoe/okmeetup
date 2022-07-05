@@ -16,7 +16,7 @@ import Colors from '../constants/Colors'
 import Text from './Text'
 
 type ButtonProps = {
-    children: String
+    children: JSX.Element | String
     style?: StyleProp<ViewStyle>
     textStyle?: StyleProp<TextStyle>
     onPress: () => void
