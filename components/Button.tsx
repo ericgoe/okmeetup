@@ -16,7 +16,7 @@ import Colors from '../constants/Colors'
 import Text from './Text'
 
 type ButtonProps = {
-    children: string
+    children: JSX.Element | String
     style?: StyleProp<ViewStyle>
     textStyle?: StyleProp<TextStyle>
     onPress: () => void
@@ -24,7 +24,7 @@ type ButtonProps = {
 
 const Button = (props: ButtonProps) => {
     return (
-        <TouchableOpacity style={[props.style, styles.button]} onPress={props.onPress}>
+        <TouchableOpacity style={[styles.button, props.style]} onPress={props.onPress}>
             <Text style={[props.textStyle, styles.buttonText]}>{props.children}</Text>
         </TouchableOpacity>
     )

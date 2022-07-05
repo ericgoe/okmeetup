@@ -15,8 +15,10 @@ import NotFoundScreen from '../screens/NotFoundScreen'
 import { RootStackParamList } from '../types'
 import LinkingConfiguration from './LinkingConfiguration'
 import IntroScreen from '../screens/IntroScreen'
+import SelectFreeTimeScreen from '../screens/SelectFreeTimeScreen'
 import JoinScreen from '../screens/JoinScreen'
 import EventListScreen from '../screens/EventListScreen'
+import ShowImportedEventsScreen from '../screens/ShowImportedEventsScreen'
 
 
 type NavigationProps = {
@@ -49,7 +51,9 @@ function RootNavigator() {
             <Stack.Screen name='CreateEventScreen' component={CreateEventScreen} />
             <Stack.Screen name='EventListScreen' component={EventListScreen} />
             <Stack.Screen name="InviteUsersScreen" component={InviteUsersScreen} />
-            <Stack.Screen name='Root' component={NotFoundScreen} options={{ title: 'Oops!' }} />
+            <Stack.Screen name='SelectFreeTimeScreen' component={SelectFreeTimeScreen} />
+            <Stack.Screen name='ShowImportedEventsScreen' component={ShowImportedEventsScreen}/>
+			<Stack.Screen name='Root' component={NotFoundScreen} options={{ title: 'Oops!' }} />
         </Stack.Navigator>
     )
 }
